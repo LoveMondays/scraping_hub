@@ -1,4 +1,4 @@
-require "scraping_hub/version"
+require 'scraping_hub/version'
 
 module ScrapingHub
   # Your code goes here...
