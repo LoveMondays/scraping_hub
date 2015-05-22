@@ -1,5 +1,9 @@
-require 'scraping_hub/version'
+%w(version setup).each do |file_name|
+  require "scraping_hub/#{file_name}"
+end
 
 module ScrapingHub
-  # Your code goes here...
+  def self.configure
+    yield ScrapingHub::Setup
+  end
 end
