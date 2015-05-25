@@ -1,6 +1,6 @@
-%w(version setup).each do |file_name|
 require 'jeckle'
 
+%w(version setup job item).each do |file_name|
   require "scraping_hub/#{file_name}"
 end
 
