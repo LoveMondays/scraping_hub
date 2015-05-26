@@ -39,7 +39,7 @@ RSpec.describe ScrapingHub::Setup do
 
   describe '.open_timeout' do
     it 'verify open_timeout new value' do
-      expect(setup.open_timeout).to be nil
+      expect(setup.open_timeout).to eq 1
       setup.open_timeout = 5
       expect(setup.open_timeout).to eq 5
     end
@@ -47,7 +47,7 @@ RSpec.describe ScrapingHub::Setup do
 
   describe '.read_timeout' do
     it 'verify read_timeout new value' do
-      expect(setup.read_timeout).to be nil
+      expect(setup.read_timeout).to eq 1
       setup.read_timeout = 5
       expect(setup.read_timeout).to eq 5
     end

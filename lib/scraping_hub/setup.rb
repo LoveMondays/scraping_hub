@@ -19,6 +19,14 @@ module ScrapingHub
       @base_url ||= 'https://storage.scrapinghub.com/'
     end
 
+    def self.open_timeout
+      @open_timeout || 1
+    end
+
+    def self.read_timeout
+      @read_timeout || 1
+    end
+
     def self.stub?
       @stub || false
     end
