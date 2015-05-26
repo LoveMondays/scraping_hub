@@ -4,7 +4,7 @@ CodeClimate::TestReporter.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'bundler/setup'
-require 'fixtures/jeckle_config'
+require 'support/jeckle_config'
 require 'scraping_hub'
 
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }

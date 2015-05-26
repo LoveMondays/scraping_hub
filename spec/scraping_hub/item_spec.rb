@@ -8,4 +8,19 @@ RSpec.describe ScrapingHub::Item do
       it { expect(described_class.search('job_id')).to eq [] }
     end
   end
+
+  describe '.find_each' do
+    let(:job) { double 'job', key: 'my-job-key' }
+    let(:item1) { double }
+    let(:item2) { double }
+
+    before do
+      allow(ScrapingHub::Job).to receive(:search) { [job] }
+      allow(described_class).to receive(:search).with(job.key) { [item1, item2] }
+    end
+
+    it 'verify search items by job' do
+      expect { |b| described_class.find_each(&b) }.to yield_successive_args(item1, item2)
+    end
+  end
 end

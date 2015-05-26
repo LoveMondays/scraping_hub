@@ -17,11 +17,19 @@ module ScrapingHub
     attribute :provider_description, String, as: :description
     attribute :provider_contract, String, as: :contract_type
 
-    def self.search(job_id, page_size = 1000, offset_id = nil)
+    def self.search(job_id, offset_id = nil, page_size = 1000)
       return [] if ScrapingHub.stub
 
       endpoint = "/items/#{ScrapingHub.project_id}/#{job_id}"
       super(resource_name: endpoint, count: page_size, start: offset_id)
+    end
+
+    def self.find_each
+      Job.search.each do |job|
+        search(job.key).each do |item|
+          yield item
+        end
+      end
     end
   end
 end

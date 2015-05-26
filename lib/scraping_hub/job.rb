@@ -12,7 +12,7 @@ module ScrapingHub
     attribute :key, String, as: :id
     attribute :ts, Date, as: :updated_at
 
-    def self.search(page_size = 1000, offset_id = nil)
+    def self.search(offset_id = nil, page_size = 1000)
       return [] if ScrapingHub.stub
 
       super(count: page_size, start: offset_id)
