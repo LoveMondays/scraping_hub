@@ -18,9 +18,9 @@ module ScrapingHub
     attribute :provider_contract, String, as: :contract_type
 
     def self.search(job_id, page_size = 1000, offset_id = nil)
-      return [] if ScrapingHub::Setup.stub?
+      return [] if ScrapingHub.stub
 
-      endpoint = "/items/#{ScrapingHub::Setup.project_id}/#{job_id}"
+      endpoint = "/items/#{ScrapingHub.project_id}/#{job_id}"
       super(resource_name: endpoint, count: page_size, start: offset_id)
     end
   end

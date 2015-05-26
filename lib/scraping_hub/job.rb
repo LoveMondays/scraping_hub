@@ -4,7 +4,7 @@ module ScrapingHub
     include Jeckle::Resource
 
     def self.resource_name
-      "/jobq/#{ScrapingHub::Setup.project_id}/list"
+      "/jobq/#{ScrapingHub.project_id}/list"
     end
 
     api :scraping_hub
@@ -13,7 +13,7 @@ module ScrapingHub
     attribute :ts, Date, as: :updated_at
 
     def self.search(page_size = 1000, offset_id = nil)
-      return [] if ScrapingHub::Setup.stub?
+      return [] if ScrapingHub.stub
 
       super(count: page_size, start: offset_id)
     end
